@@ -7,3 +7,4 @@ new commit 3
 new commit 4
 new commit5
 new commit6
+new commit7
