@@ -1,3 +1,4 @@
-FROM vimal13/apache-webserver-php
-COPY . /var/www/html
-EXPOSE 80
+FROM busybox
+COPY . /var/www/html 
+EXPOSE 80 
+ 
