@@ -4,5 +4,5 @@ FROM alpine:latest
 # Install bash (if needed)
 RUN apk update && apk add bash
 
-# Use an inline shell command for logging
-ENTRYPOINT ["/bin/sh", "-c", "echo 'Container starting...' >> /var/log/container.log && echo 'Initialization complete.' >> /var/log/container.log && tail -f /dev/null"]
+# Print logs to stdout instead of a file
+ENTRYPOINT ["/bin/sh", "-c", "echo 'Container starting...'; echo 'Initialization complete.'; tail -f /dev/null"]
