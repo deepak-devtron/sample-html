@@ -1,14 +1,12 @@
 # Use your base image (example: Alpine)
 FROM alpine:latest
 
-# Install any necessary dependencies (if needed)
+# Install bash
 RUN apk update && apk add bash
 
-# Logging directly when container starts
-ENTRYPOINT echo "Container starting..." >> /var/log/container.log && \
-    echo "Initialization complete." >> /var/log/container.log && \
+# Copy the script
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
-# Replace "your-main-command-here" with your container's main command
-# For example, if you are running a web server, you might use:
-# CMD ["nginx", "-g", "daemon off;"]
-
+# Use script as ENTRYPOINT
+ENTRYPOINT ["/usr/local/bin/start.sh"]
