@@ -1,12 +1,8 @@
-# Use your base image (example: Alpine)
+# Use Alpine as the base image
 FROM alpine:latest
 
-# Install bash
+# Install bash (if needed)
 RUN apk update && apk add bash
 
-# Copy the script
-COPY start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
-
-# Use script as ENTRYPOINT
-ENTRYPOINT ["/usr/local/bin/start.sh"]
+# Use an inline shell command for logging
+ENTRYPOINT ["/bin/sh", "-c", "echo 'Container starting...' >> /var/log/container.log && echo 'Initialization complete.' >> /var/log/container.log && tail -f /dev/null"]
